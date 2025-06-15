@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hylary, amor da minha vida 💖</title>
+    <style>
+        body {
+            background-image: url(/img/background.gif);
+            background-repeat: repeat;
+            background-size: auto;
+            background-position: top left;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .painel,
+        #mensagem,
+        #terceira {
+            background: linear-gradient(145deg, #f5c6aa, #f9e0d9);
+            width: 350px;
+            border-radius: 20px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            display: none;
+            animation: aparecer 0.5s ease-in-out;
+        }
+
+        .painel.active,
+        #mensagem.active,
+        #terceira.active {
+            display: block;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: #ff7f7f;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #ff4f4f;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        img {
+            width: 200px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="painel active" id="painel">
+        <h1>Olá, amor da minha vida! 💖</h1>
+        <img src="/img/E8h5zTtWUAozYqx.jpg" alt="Fofo">
+        <h2>Aceita viver o resto da vida comigo?</h2>
+
+        <div class="botoes">
+            <a href="https://www.youtube.com/watch?v=DURGfr1oh30&list=RDDURGfr1oh30&start_radio=1">
+                <button>Sim!</button>
+            </a>
+            <button onclick="mostrarMensagem()">Não!</button>
+            <button onclick="tocarOuPausar()" id="botaoAudio">Tocar Musga</button>
+        </div>
+    </div>
+
+    <div id="mensagem">
+        <h2>Sinto muito, mas já iremos passar o resto da vida juntinhos! 💖</h2>
+        <img src="/img/2.jpg" alt="Fofo">
+        <div class="botoes">
+            <button onclick="mostrarTerceira()">Continuar</button>
+        </div>
+    </div>
+
+    <div id="terceira">
+        <h2>Sinto muito meu amor mas agora é para sempre! 💖</h2>
+        <img src="/img/3.jpg" alt="Fofo">
+        <div class="botoes">
+            <button onclick="voltarInicio()">Voltar ao início</button>
+        </div>
+    </div>
+
+    <audio id="audio" src="media/The Lumineers - Sleep On The Floor (Official Video).mp3"></audio>
+
+    <script>
+        function mostrarMensagem() {
+            document.getElementById("painel").classList.remove("active");
+            document.getElementById("mensagem").classList.add("active");
+        }
+
+        function mostrarTerceira() {
+            document.getElementById("mensagem").classList.remove("active");
+            document.getElementById("terceira").classList.add("active");
+        }
+
+        function voltarInicio() {
+            document.getElementById("terceira").classList.remove("active");
+            document.getElementById("painel").classList.add("active");
+        }
+
+        const audio = document.getElementById('audio');
+        const botaoAudio = document.getElementById('botaoAudio');
+
+        function tocarOuPausar() {
+            if (audio.paused) {
+                audio.play();
+                botaoAudio.innerHTML = 'Eu te amo';
+            } else {
+                audio.pause();
+                botaoAudio.innerHTML = 'Tocar Musga';
+            }
+        }
+    </script>
+</body>
+
+</html>
